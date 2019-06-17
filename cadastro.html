@@ -10,13 +10,12 @@
 </head>
 
 <body>
-
     <header>
         <nav>
             <ul>
-                <li><a href="#">Página Inicial</a></li>
-                <li><a href="#">Cadastrar</a></li>
-                <li><a href="#" onclick="openLogin()" id="login">Login</a></li>
+                <li><a href="./index.html">Página Inicial</a></li>
+                <li><a href="./cadastro.html">Cadastrar</a></li>
+                <li><a href="#" onclick="open_login()" id="login">Login</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><input type="text" placeholder="Pesquisar"></li>
                 <li><button type="submit">Pesquisar</button></li>
@@ -29,15 +28,20 @@
 
         </nav>
     </header>
+
     <main>
-        <input type="text" placeholder="Nome">
-        <input type="text" placeholder="Sobrenome">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Senha">
+        <input type="text" placeholder="Nome" id="fname">
+        <input type="text" placeholder="Sobrenome" id="lname">
+        <input type="email" placeholder="Email" id="email">
+        <input type="password" placeholder="Senha" id="password">
+        <input type="password" placeholder="Confirme sua senha" id="confirm_password" onkeyup="validate_password()">
+        <button type="submit" onclick="sign_up()" id="signup_button" disabled>Cadastrar</button>
     </main>
+
     <footer></footer>
 
-    <script src="view.js"></script>
+    <script src="./javascript/view/view.js"></script>
+    <script src="./javascript/controller/UserController.js"></script>
 
 </body>
 
