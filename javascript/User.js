@@ -2,7 +2,7 @@ const user = {
     fname: null,
     lname: null,
     email: null,
-    first_password: null
+    password: null
 };
 
 export default user;

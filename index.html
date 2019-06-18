@@ -17,13 +17,13 @@
                 <li><a href="./cadastro.html">Cadastrar</a></li>
                 <li><a href="#" onclick="open_login()" id="login">Login</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><input type="text" placeholder="Pesquisar"></li>
-                <li><button type="submit">Pesquisar</button></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"></li>
+                <li><button type="submit" onclick="search()">Pesquisar</button></li>
             </ul>
             <form id="login-popup">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <button type="submit">Entrar</button>
+                <input type="email" placeholder="Email" id="login_email">
+                <input type="password" placeholder="Senha" id="login_password">
+                <button type="submit" onclick="sign_in()">Entrar</button>
             </form>
 
         </nav>
@@ -32,8 +32,8 @@
     </main>
     <footer></footer>
 
-    <script src="./javascript/view.js">
-    </script>
+    <script type="module" src="./javascript/SignIn.js"></script>
+    <script type="module" src="./javascript/Search.js"></script>
 </body>
 
 </html>
