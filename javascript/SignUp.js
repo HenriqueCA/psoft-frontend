@@ -12,8 +12,8 @@ function change_signup_button(password,confirm_password){
 }
 
 window.validate_password = function validate_password() {
-    password = $password.value;
-    confirm_password = $confirm_password.value;
+    let password = $password.value;
+    let confirm_password = $confirm_password.value;
     change_signup_button(password, confirm_password);
 }
 // ?

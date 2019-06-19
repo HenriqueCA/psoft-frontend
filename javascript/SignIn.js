@@ -1,19 +1,69 @@
 import user from "./User.js";
 
+const $login_form = document.querySelector("#login");
+
 const $login_email = document.querySelector("#login_email");
 const $login_password = document.querySelector("#login_password");
 
-// Colocar essas duas funções em outro script.
-window.open_login = function open_login() {
-    document.getElementById("login-popup").style.display = "block";
-    document.getElementById("login").setAttribute("onclick", "close_login()");
+const $login_button = document.querySelector("#login_button");
+const $login_popup = document.querySelector("#login_popup");
+
+const $signup_form = document.querySelector("#signup");
+const $signup_popup = document.querySelector("#signup_popup");
+
+const $fname = document.querySelector("#fname");
+const $lname = document.querySelector("#lname");
+const $email = document.querySelector("#email");
+const $password = document.querySelector("#password");
+const $confirm_password = document.querySelector("#confirm_password");
+const $signup_button = document.querySelector("#signup_button");
+
+const $close = document.querySelectorAll(".close_popup");
+
+$login_form.onclick = open_login;
+$signup_form.onclick = open_signup;
+
+$login_button.onclick = sign_in;
+$signup_button.onclick = sign_up;
+
+$close[0].onclick = close_forms;
+$close[1].onclick = close_forms;
+
+$fname.onkeyup = validate_signup;
+$lname.onkeyup = validate_signup;
+$email.onkeyup = validate_signup;
+$password.onkeyup = validate_signup;
+$confirm_password.onkeyup = validate_signup;
+
+function validate_signup(){
+    let fname = $fname.value;
+    let lname = $lname.value;
+    let email = $email.value;
+    let password = $password.value;
+    let confirm_password = $confirm_password.value;
+    if (fname != "" && lname != "" && email != "" && password != "" && password == confirm_password){
+        $signup_button.disabled = false;
+    }
+    else{
+        $signup_button.disabled = true;
+    }
 }
 
-window.close_login = function close_login() {
-    document.getElementById("login-popup").style.display = "none";
-    document.getElementById("login").setAttribute("onclick", "open_login()");
+function open_login() {
+    $signup_popup.style.display = "";
+    $login_popup.style.display = "block";
 }
-//
+
+function open_signup() {
+    $login_popup.style.display = "";
+    $signup_popup.style.display = "block";
+}
+
+function close_forms() {
+    $login_popup.style.display = "";
+    $signup_popup.style.display = "";
+}
+
 
 // ?
 function signin_response(response) {
@@ -24,10 +74,19 @@ function signin_response(response) {
     }
 }
 
-window.sign_in = async function sign_in() {
+async function sign_in() {
     user.email = $login_email.value;
     user.password = $login_password.value;
 
     let response = fetch("./user/signin/", { method: "POST", body: user });
     signin_response(response);
+}
+
+async function sign_up() {
+    user.fname = $fname.value;
+    user.lname = $lname.value;
+    user.email = $email.value;
+    user.password = $password.value;
+    let response = await fetch("/user/", { method: "POST", body: user });
+    signup_response(response);
 }
