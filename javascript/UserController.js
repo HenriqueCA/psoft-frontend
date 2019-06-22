@@ -35,33 +35,39 @@ $email.onkeyup = validate_signup;
 $password.onkeyup = validate_signup;
 $confirm_password.onkeyup = validate_signup;
 
-function validate_signup(){
+window.addEventListener('click', function (e) {
+    if (!($login_popup.contains(e.target) || $signup_popup.contains(e.target) || $login_form.contains(e.target))) {
+        close_forms();
+    }
+});
+
+function validate_signup() {
     let fname = $fname.value;
     let lname = $lname.value;
     let email = $email.value;
     let password = $password.value;
     let confirm_password = $confirm_password.value;
-    if (fname != "" && lname != "" && email != "" && password != "" && password == confirm_password){
+    if (fname != "" && lname != "" && email != "" && password != "" && password == confirm_password) {
         $signup_button.disabled = false;
     }
-    else{
+    else {
         $signup_button.disabled = true;
     }
 }
 
 function open_login() {
-    $signup_popup.style.display = "";
-    $login_popup.style.display = "block";
+    $signup_popup.hidden = true;
+    $login_popup.hidden = false;
 }
 
 function open_signup() {
-    $login_popup.style.display = "";
-    $signup_popup.style.display = "block";
+    $login_popup.hidden = true;
+    $signup_popup.hidden = false;
 }
 
 function close_forms() {
-    $login_popup.style.display = "";
-    $signup_popup.style.display = "";
+    $login_popup.hidden = true;
+    $signup_popup.hidden = true;
 }
 
 
@@ -78,8 +84,16 @@ async function sign_in() {
     user.email = $login_email.value;
     user.password = $login_password.value;
 
-    let response = fetch("./user/signin/", { method: "POST", body: user });
+    let response = await fetch("/user/signin/", { method: "POST", body: user });
     signin_response(response);
+}
+
+function signup_response(response){
+    if(response.status == "OK") {
+
+    } else{
+
+    }
 }
 
 async function sign_up() {
