@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UCDb: Classificações e reviews de cursos da UFCG</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Página Inicial</a></li>
+                <li><a href="#" id="login">Login</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"></li>
+                <li><button type="submit" id="search_button">Pesquisar</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <form id="login_popup" class="popup" hidden>
+            <a href="#" class="close_popup">Fechar</a>
+
+            <input type="email" placeholder="Email" id="login_email">
+            <input type="password" placeholder="Senha" id="login_password">
+            <button type="submit" id="login_button">Entrar</button>
+
+            <p>Não tem conta? Faça agora mesmo! <a href="#" id="signup">Cadastrar</a></p>
+        </form>
+
+        <form id="signup_popup" class="popup" hidden>
+            <a href="#" class="close_popup">Fechar</a>
+
+            <label for="fname">Nome</label>
+            <input type="text" placeholder="Nome" id="fname">
+
+            <label for="lname">Sobrenome</label>
+            <input type="text" placeholder="Sobrenome" id="lname">
+
+            <label for="email">Email</label>
+            <input type="email" placeholder="Email" id="email">
+
+            <label for="password">Senha</label>
+            <input type="password" placeholder="Senha" id="password">
+
+            <label for="confirm_password">Confirme sua senha</label>
+            <input type="password" placeholder="Senha" id="confirm_password">
+
+            <button type="submit" id="signup_button" disabled>Cadastrar</button>
+        </form>
+
+
+        <h1 id="nome_disciplina">Nome da Disciplina</h1>
+        <p>Dê like na disciplina! <button type="submit">Like</button></p>
+        <section id="likes">
+            <p>Total de Likes: <output id="total_likes"></output></p>
+            <p>Usuários que deram like:</p>
+        </section>
+
+        <section id="notas">
+            <p>Nota da disciplina: <output id="nota_media"></output></p>
+            <p>Usuário - Nota</p>
+        </section>
+
+        <section id="comments">
+            <input type="text" id="new_comment">
+            <button type="submit" id="submit_comment">Adicionar comentário</button> 
+
+        </section>
+
+    </main>
+    <footer></footer>
+
+    <script type="module" src="./javascript/UserController.js"></script>
+    <script type="module" src="./javascript/SearchController.js"></script>
+</body>
+
+</html>
