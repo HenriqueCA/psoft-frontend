@@ -4,7 +4,7 @@ const $search_button = document.querySelector("#search_button");
 $search_button.onclick = search;
 
 async function search_substring(search_text) {
-    document.location.href = "../search.html?substring=" + search_text;
+    document.location.href = "../search.html?search=" + search_text;
 }
 
 async function search_code(search_id) {
@@ -12,7 +12,7 @@ async function search_code(search_id) {
 }
 
 function decide_search(search_text) {
-    if (isNaN(search_text)) {
+    if (isNaN(search_text) || search_text == "") {
         search_substring(search_text);
     }
     else {

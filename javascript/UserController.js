@@ -1,4 +1,6 @@
 import user from "./User.js";
+import endpoints from "./Endpoints.js";
+import { post_request, get_request } from "./Requests.js";
 
 const $login_form = document.querySelector("#login");
 
@@ -35,6 +37,18 @@ $email.onkeyup = validate_signup;
 $password.onkeyup = validate_signup;
 $confirm_password.onkeyup = validate_signup;
 
+var user_token = window.localStorage.getItem("token");
+
+validate_token(user_token);
+
+
+function validate_token(token) {
+    if (token != "") {
+        $login_form.innerHTML = "Sair";
+        $login_form.onclick = logout;
+    }
+}
+
 window.addEventListener('click', function (e) {
     if (!($login_popup.contains(e.target) || $signup_popup.contains(e.target) || $login_form.contains(e.target))) {
         close_forms();
@@ -70,37 +84,52 @@ function close_forms() {
     $signup_popup.hidden = true;
 }
 
+function logout() {
+    window.localStorage.setItem("token", "");
+    document.location.href = "../index.html";
+}
 
-// ?
-function signin_response(response) {
-    if (response.status == "OK") {
 
-    } else {
+async function signin_response(response) {
+    if (response.status == 200) {
+        alert("Bem Vindo!");
+        close_forms();
+        let token = response.headers.get('Authorization');
+        window.localStorage.setItem("token", token);
+        location.reload();
 
+    }
+    else {
+        let response_text = await response.text();
+        alert(response_text + "DEU RUIM");
     }
 }
 
 async function sign_in() {
+    delete user.firstName;
+    delete user.lastName;
     user.email = $login_email.value;
     user.password = $login_password.value;
 
-    let response = await fetch("/user/signin/", { method: "POST", body: user });
+    let response = await post_request(endpoints.login(), user);
+
     signin_response(response);
 }
 
-function signup_response(response){
-    if(response.status == "OK") {
-
-    } else{
-
+async function signup_response(response) {
+    let response_text = await response.text();
+    alert(response_text);
+    if (response.status == 200) {
+        close_forms();
     }
 }
 
 async function sign_up() {
-    user.fname = $fname.value;
-    user.lname = $lname.value;
     user.email = $email.value;
+    user.firstName = $fname.value;
+    user.lastName = $lname.value;
     user.password = $password.value;
-    let response = await fetch("/user/", { method: "POST", body: user });
+
+    let response = await post_request(endpoints.register(), user);
     signup_response(response);
 }

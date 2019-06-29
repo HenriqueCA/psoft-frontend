@@ -1,12 +1,28 @@
-const $disciplines_section = document.querySelector("#disciplines");
+import endpoints from "./Endpoints.js";
+import {get_request} from "./Requests.js";
+
+const $disciplines_list = document.querySelector("#disciplines_list");
 
 var url_params = new URLSearchParams(window.location.search);
 
-var substring = url_params.get("substring");
+var substring = url_params.get("search");
 
-list_disciplines(substring);
+get_disciplines(substring);
 
-async function list_disciplines(substring){
-    let response = await fetch("/disciplines/", { method: "POST", body: substring });
-    // for every discipline returned, create element <a> with href and append to $disciplines_section.
+async function get_disciplines(substring) {
+    let response = await get_request(endpoints.subject(), "?search=" + substring);
+    let body = await response.text();
+    list_disciplines(body);
+}
+
+function list_disciplines(disciplines) {
+    var obj_disciplines = JSON.parse(disciplines);
+    obj_disciplines.forEach(element => {
+        let a = document.createElement("a");
+        a.setAttribute("href","../discipline.html?" + element.id)
+        a.innerHTML = element.name;
+        let li = document.createElement("li");
+        li.appendChild(a);
+        $disciplines_list.appendChild(li);
+    });
 }

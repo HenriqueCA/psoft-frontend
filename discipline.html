@@ -56,16 +56,20 @@
         </form>
 
 
-        <h1 id="nome_disciplina">Nome da Disciplina</h1>
-        <p>Dê like na disciplina! <button type="submit">Like</button></p>
-        <section id="likes">
+        <h1 id="subject_name"></h1>
+
+        <section>
+            <button type="submit" id="like_button"></button>
             <p>Total de Likes: <output id="total_likes"></output></p>
             <p>Usuários que deram like:</p>
+            <ul id="users_likes">
+
+            </ul>
         </section>
 
         <section id="comments">
-            <input type="text" id="new_comment">
-            <button type="submit" id="submit_comment">Adicionar comentário</button> 
+            <input type="text" id="new_comment" maxlength="255">
+            <button type="submit" id="submit_comment" disabled>Adicionar comentário</button>
 
         </section>
 
@@ -74,7 +78,7 @@
 
     <script type="module" src="./javascript/UserController.js"></script>
     <script type="module" src="./javascript/SearchController.js"></script>
-    <script type="module" src = "./javascript/Discipline.js"></script>
+    <script type="module" src="./javascript/Discipline.js"></script>
 </body>
 
 </html>
