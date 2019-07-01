@@ -6,6 +6,10 @@ const $disciplines_list = document.querySelector("#disciplines");
 const $button_order_likes = document.querySelector("#order_likes");
 const $button_order_comments = document.querySelector("#order_comments");
 
+// VAMO LA FAZER O DROP DOWN
+
+
+
 $button_order_likes.onclick = list_likes;
 $button_order_comments.onclick = list_comments;
 
