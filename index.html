@@ -11,13 +11,16 @@
 
 <body>
     <header>
+        <h1>UCDb</h1>
+        <figure>
+            <img src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
+        </figure>
         <nav>
             <ul id="nav_list">
-                <li><a href="./index.html">Página Inicial</a></li>
+                <li><a href="./index.html" class="current">Página Inicial</a></li>
                 <li><a href="#" id="login">Login</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"></li>
-                <li><button type="submit" id="search_button">Pesquisar</button></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"><button type="submit" id="search_button">Pesquisar</button></li>
             </ul>
         </nav>
     </header>
@@ -55,8 +58,23 @@
             <button type="submit" id="signup_button" disabled>Cadastrar</button>
         </form>
 
+        <h2>UCDb: Classificações e reviews de cursos da UFCG</h2>
+        <p>UCDb é um site voltado para os cursos de computação da Universidade Federal de Campina Grande.</p>
+        <p>É possível se cadastrar no site e verificar as páginas das disciplinas existentes no curso, dando like na disciplina e até mesmo comentar sobre.</p>
+        <p>Dê sua opinião nas disciplinas que já cursou, ou tire suas dúvidas nos comentários!</p>
+        
+        <h2>Sobre</h2>
+        <p>Falar sobre o site, especificações do projeto etc etc.</p>
+
     </main>
-    <footer></footer>
+    <footer>
+        <ul>
+            <li>Github do Henrique</li>
+            <li>Github do Wesley</li>
+            <li>Video sobre o site</li>
+            <li>Página do projeto</li>
+        </ul>
+    </footer>
 
     <script type="module" src="./javascript/UserController.js"></script>
     <script type="module" src="./javascript/SearchController.js"></script>
