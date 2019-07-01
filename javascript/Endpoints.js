@@ -1,5 +1,5 @@
 const endpoints = {
-    host: "http://10.11.4.11:5555/api/",
+    host: "http://127.0.0.1:8080/api/",
 
     login() {
         return this.host + "login";
@@ -9,6 +9,9 @@ const endpoints = {
     },
     subject() {
         return this.host + "v1/subject";
+    },
+    ranking(){
+        return this.subject + "/ranking";
     }
 
 };

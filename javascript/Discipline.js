@@ -140,9 +140,15 @@ function like() {
 
 function dislike() {
     let response = delete_request(endpoints.subject(), "/" + id + "/like");
+    like_button();
 }
 
 function dislike_button() {
     $like_button.innerHTML = "Remover o Like";
     $like_button.onclick = dislike;
+}
+
+function like_button(){
+    $like_button.innerHTML= "Like"
+    $like_button.onclick = like;
 }

@@ -20,8 +20,7 @@
                 <li><a href="./index.html">Página Inicial</a></li>
                 <li><a href="#" id="login">Login</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"></li>
-                <li><button type="submit" id="search_button">Pesquisar</button></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"> <button type="submit" id="search_button">Pesquisar</button></li>
             </ul>
         </nav>
     </header>
@@ -59,14 +58,16 @@
             <button type="submit" id="signup_button" disabled>Cadastrar</button>
         </form>
 
-        <button type="menu">Ranking de disciplinas por...</button>
+        <button type="menu" id="drop_down">Ranking de disciplinas por...</button>
         <ul>
-            <li><button type="submit" hidden>Quantidade de likes</button></li>
-            <li><button type="submit" hidden>Melhor nota</button></li>
-            <li><button type="submit" hidden>Quantidade de comentários</button></li>
+            <li><button type="submit" hidden id="order_likes">Quantidade de likes</button></li>
+            <li><button type="submit" hidden id="order_comments">Quantidade de comentários</button></li>
         </ul>
 
-        <section id="disciplines"></section>
+        <section >
+            <ul id="disciplines"></ul>
+            
+        </section>
 
 
     </main>
