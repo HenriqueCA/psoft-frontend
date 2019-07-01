@@ -1,3 +1,8 @@
+import { delete_comment } from "./CommentController.js";
+import endpoints from "./Endpoints.js";
+
+
+
 class Comment extends HTMLElement {
     constructor() {
         super();
@@ -9,9 +14,6 @@ class Comment extends HTMLElement {
         const comment = this.getAttribute("comment");
         const user = this.getAttribute("user");
         const time_stamp = this.getAttribute("timestamp");
-        const id = this.getAttribute("id");
-
-        const is_from_user = this.hasAttribute("isfromuser")
 
         let css = this.css();
 
@@ -32,19 +34,17 @@ class Comment extends HTMLElement {
             `
 
         this.comment_delete = this.shadowRoot.querySelector("button");
-        this.comment_delete.onclick = function(){
-            //request delete;
-            console.log("delete");
-        }
 
-        if (is_from_user) {
-            this.showButton();
-        }
+
     }
 
-    showButton() {
-        this.comment_delete.hidden = false;
+    get get_button(){
+        return this.comment_delete;
     }
+    set set_comment(msg){
+        this.shadowRoot.querySelector(".comment").value = msg;
+    }
+
 
     user_css() {
         let style = this.css();

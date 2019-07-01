@@ -1,7 +1,7 @@
 import Comment from "./Comment.js";
 import endpoints from "./Endpoints.js";
-import { get_request } from "./Requests.js";
-import { add_new_comment, reply_comment } from "./CommentController.js";
+import { get_request, post_request, delete_request } from "./Requests.js";
+import { add_new_comment, reply_comment, delete_comment } from "./CommentController.js";
 
 customElements.define("ps-comment", Comment);
 
@@ -27,7 +27,6 @@ $new_comment_button.onclick = function () { add_new_comment(id, $new_comment_tex
 
 discipline_page(id);
 
-
 async function discipline_page(id) {
     let response = await get_request(endpoints.subject(), "/" + id);
     if (response.status == 200) {
@@ -45,7 +44,6 @@ function change_page(data) {
     $like_button.innerHTML = "Like";
 
     change_like(data_json.likes, data_json.email);
-
     list_comments(data_json.commentList, data_json.email);
 }
 
@@ -65,21 +63,31 @@ function change_like(likes, email) {
 
 function create_comment(comment) {
     let ps_comment = document.createElement("ps-comment");
-    ps_comment.setAttribute("comment", comment.msg);
+    if (comment.msg == "") {
+        ps_comment.setAttribute("comment", "Comentário apagado!");
+    } else {
+        ps_comment.setAttribute("comment", comment.msg);
+    }
     ps_comment.setAttribute("user", comment.author);
     ps_comment.setAttribute("timestamp", comment.timestamp);
     ps_comment.setAttribute("id", comment.id);
-    if (comment.author == email) {
-        ps_comment.setAttribute("isfromuser", true);
-    }
 
     return ps_comment;
 }
 
 function list_comments(comments, email) {
     comments.forEach(comment => {
+        let ps_comment = create_comment(comment);
+        $comment_section.appendChild(ps_comment);
 
-        $comment_section.appendChild(create_comment(comment));
+        let delete_button = ps_comment.get_button;
+        if (comment.author == email) {
+            delete_button.hidden = false;
+            delete_button.onclick = function () {
+                delete_comment(id, comment.id);
+                ps_comment.set_comment("Comentário apagado!");
+            }
+        }
 
         let reply_button = document.createElement("button");
         reply_button.innerHTML = "Responder comentário";
@@ -88,7 +96,7 @@ function list_comments(comments, email) {
         let reply_input = document.createElement("input");
         reply_input.setAttribute("type", "text");
         reply_input.setAttribute("hidden", true);
-        reply_input.setAttribute("maxlength","255");
+        reply_input.setAttribute("maxlength", "255");
 
         let send_reply = document.createElement("button");
         send_reply.innerHTML = "Responder comentário";
@@ -126,14 +134,15 @@ function validate_comment(text, button) {
 }
 
 function like() {
-    // request like
+    let response = post_request(endpoints.subject() + "/" + id + "/like", {});
+    dislike_button();
 }
 
 function dislike() {
-    // request like
+    let response = delete_request(endpoints.subject(), "/" + id + "/like");
 }
 
 function dislike_button() {
-    $like_button.innerHTML = "Deslike";
+    $like_button.innerHTML = "Remover o Like";
     $like_button.onclick = dislike;
 }
