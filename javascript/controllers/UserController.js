@@ -1,6 +1,6 @@
-import user from "./User.js";
-import endpoints from "./Endpoints.js";
-import { post_request, get_request } from "./Requests.js";
+import user from "../models/User.js";
+import endpoints from "../models/Endpoints.js";
+import { post_request } from "../models/Requests.js";
 
 const $login_form = document.querySelector("#login");
 
@@ -21,6 +21,8 @@ const $confirm_password = document.querySelector("#confirm_password");
 const $signup_button = document.querySelector("#signup_button");
 
 const $close = document.querySelectorAll(".close_popup");
+
+const $ranking = document.querySelector("#ranking");
 
 $login_form.onclick = open_login;
 $signup_form.onclick = open_signup;
@@ -44,6 +46,7 @@ validate_token(user_token);
 
 function validate_token(token) {
     if (token != "") {
+        $ranking.hidden = false;
         $login_form.innerHTML = "Sair";
         $login_form.onclick = logout;
     }
@@ -86,7 +89,8 @@ function close_forms() {
 
 function logout() {
     window.localStorage.setItem("token", "");
-    document.location.href = "../index.html";
+    document.location.href = "../../html/index.html";
+    $ranking.hidden = true;
 }
 
 
@@ -101,7 +105,7 @@ async function signin_response(response) {
     }
     else {
         let response_text = await response.text();
-        alert(response_text + "DEU RUIM");
+        alert("Seu login está errado ou você não tem conta.");
     }
 }
 
@@ -118,7 +122,8 @@ async function sign_in() {
 
 async function signup_response(response) {
     let response_text = await response.text();
-    alert(response_text);
+    let data = JSON.parse(response_text);
+    alert(data.msg);
     if (response.status == 200) {
         close_forms();
     }

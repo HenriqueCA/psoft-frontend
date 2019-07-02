@@ -1,5 +1,5 @@
-import endpoints from "./Endpoints.js";
-import { post_request } from "./Requests.js";
+import endpoints from "../models/Endpoints.js";
+import { post_request, delete_request } from "../models/Requests.js";
 
 async function add_new_comment(subject_id, text) {
     let response = "";
@@ -17,7 +17,7 @@ async function reply_comment(subject_id, text, id) {
     if (text.trim() == "") {
         alert("Comentário vazio");
     } else {
-        response = await post_request(endpoints.subject() + "/" + subject_id + "/comment" + "/" + id + "/reply", {'msg': text });
+        response = await post_request(endpoints.subject() + "/" + subject_id + "/comment" + "/" + id, {'msg': text });
     }
     return response;
 

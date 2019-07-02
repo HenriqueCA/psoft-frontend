@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ranking - UCDb: Classificações e reviews de cursos da UFCG</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 
 <body>
     <header>
-            <h1>UCDb</h1>
-            <figure>
-                <img src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
-            </figure>
+        <h1>UCDb</h1>
+        <figure>
+            <img
+                src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
+        </figure>
         <nav>
             <ul>
                 <li><a href="./index.html">Página Inicial</a></li>
                 <li><a href="#" id="login">Login</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"> <button type="submit" id="search_button">Pesquisar</button></li>
+                <li><a href="./index.html#about">Sobre</a></li>
+                <li><a href="./ranking.html" id="ranking" class="current" hidden>Ranking</a></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"> <button type="submit"
+                        id="search_button">Pesquisar</button></li>
             </ul>
         </nav>
     </header>
@@ -58,30 +61,41 @@
             <button type="submit" id="signup_button" disabled>Cadastrar</button>
         </form>
 
-        <button type="menu" id="drop_down">Ranking de disciplinas por...</button>
+
+        <a id="ranking_drop_down">Ranking</a>
         <ul>
-            <li><button type="submit" hidden id="order_likes">Quantidade de likes</button></li>
-            <li><button type="submit" hidden id="order_comments">Quantidade de comentários</button></li>
+            <a id="order_likes" hidden>Quantidade de likes</a>
+            <a type="submit" id="order_comments" hidden>Quantidade de comentários</a>
+        </ul>
+        <a type="menu" id="order_drop_down">Ordenação</a>
+        <ul>
+            <a id="crescent_order" hidden>Crescente</a>
+            <a id="decrescent_order" hidden>Decrescente</a>
         </ul>
 
-        <section >
+        <p>Você está vendo o ranking de disciplinas por quantidade de <output class="ranking_by"></output>, em ordem
+            <output id="crescent"></output>, ou seja, a primeira disciplina listada abaixo é a com <output
+                id="maior_menor"></output> número de <output class="ranking_by"></output></p>
+
+        <section>
             <ul id="disciplines"></ul>
-            
+
         </section>
 
 
     </main>
     <footer>
-            <ul>
-                <li>Github do Henrique</li>
-                <li>Github do Wesley</li>
-                <li>Video sobre o site</li>
-                <li>Página do projeto</li>
-            </ul>
-        </footer>
+        <ul>
+            <li>Github do Henrique</li>
+            <li>Github do Wesley</li>
+            <li>Video sobre o site</li>
+            <li>Página do projeto</li>
+        </ul>
+    </footer>
 
-    <script type="module" src="./javascript/UserController.js"></script>
-    <script type="module" src="./javascript/SearchController.js"></script>
+    <script type="module" src="../javascript/controllers/UserController.js"></script>
+    <script type="module" src="../javascript/controllers/SearchController.js"></script>
+    <script type="module" src="../javascript/views/Ranking.js"></script>
 </body>
 
 </html>

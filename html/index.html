@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UCDb: Classificações e reviews de cursos da UFCG</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>UCDb</h1>
+        <figure>
+            <img
+                src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
+        </figure>
+        <nav>
+            <ul id="nav_list">
+                <li><a href="./index.html" class="current">Página Inicial</a></li>
+                <li><a href="#" id="login">Login</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="./ranking.html" id="ranking" hidden>Ranking</a></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"><button type="submit"
+                        id="search_button">Pesquisar</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <form id="login_popup" class="popup" hidden>
+            <a href="#" class="close_popup">Fechar</a>
+
+            <input type="email" placeholder="Email" id="login_email">
+            <input type="password" placeholder="Senha" id="login_password">
+            <button type="submit" id="login_button">Entrar</button>
+
+            <p>Não tem conta? Faça agora mesmo! <a href="#" id="signup">Cadastrar</a></p>
+        </form>
+
+        <form id="signup_popup" class="popup" hidden>
+            <a href="#" class="close_popup">Fechar</a>
+
+            <label for="fname">Nome</label>
+            <input type="text" placeholder="Nome" id="fname">
+
+            <label for="lname">Sobrenome</label>
+            <input type="text" placeholder="Sobrenome" id="lname">
+
+            <label for="email">Email</label>
+            <input type="email" placeholder="Email" id="email">
+
+            <label for="password">Senha</label>
+            <input type="password" placeholder="Senha" id="password">
+
+            <label for="confirm_password">Confirme sua senha</label>
+            <input type="password" placeholder="Senha" id="confirm_password">
+
+            <button type="submit" id="signup_button" disabled>Cadastrar</button>
+        </form>
+
+        <h2>UCDb: Classificações e reviews de cursos da UFCG</h2>
+        <p>UCDb é um site voltado para os cursos de computação da Universidade Federal de Campina Grande.</p>
+        <p>É possível se cadastrar no site e verificar as páginas das disciplinas existentes no curso, dando like na
+            disciplina e até mesmo comentar sobre.</p>
+        <p>Dê sua opinião nas disciplinas que já cursou, ou tire suas dúvidas nos comentários!</p>
+
+        <h2 id="about">Sobre o UCDb</h2>
+        <p>O site UCDb permite o cadastro de um usuário para acessar algumas funcionalidades privadas. Um usuário pode
+            entrar no perfil de uma disciplina e comentar sobre a disciplina, curtir a disciplina ou até mesmo ver os
+            comentários dos outros usuários, ou quem também curtiu a disciplina.A página de perfil da disciplina é
+            feita pelos próprios usuários do UCDb.</p>
+        <p>Também é permitido ver o ranking de disciplinas por quantidade de
+            curtidas ou quantidade de comentários, seja em ordem crescente ou decrescente. </p>
+        <p>Qualquer pessoa pode pesquisar disciplinas existentes no curso de computação, basta usar a barra de pesquisa
+            na barra de
+            navegação do cabeçalho.
+        </p>
+        <h2>Sobre a UFCG</h2>
+        <p>Embora formalmente seja uma universidade nova, a história da UFCG remonta à antiga Escola Politécnica de
+            Campina Grande, criada em 1952. Em particular a história do curso de computação tem sua origem no ano de
+            1968, quando foi instalado na Escola Politécnica de Campina Grande o primeiro computador em universidades do
+            norte-nordeste do Brasil, um IBM 1130.</p>
+
+        <p>Com a aquisição do primeiro computador e a vinda de engenheiros recém-formados do Instituto Tecnológico de
+            Aeronáutica (ITA) foram dadas as condições para a criação do Curso de Mestrado em Engenharia de Sistemas no
+            Centro de Ciências e Tecnologia (CCT) da UFPB, que sucedeu a Escola Politécnica dentro da reforma
+            universitária de 1970. Nesse ambiente foi criado o Departamento de Sistemas e Computação (DSC), que é até
+            hoje a unidade acadêmica da UFCG responsável pelo cursos de graduação, mestrado e doutorado em Ciência da
+            Computação da UFCG.</p>
+
+        <p>Inicialmente o DSC contou com a colaboração de professores canadenses das Universidades de Toronto e
+            Wasterloo através dos Convênios de Cooperação CIDA/UFPB e e CIDA/COMBRA encerrados em 1980. Esses convênios
+            incluiam a aquisição de livros, o treinamento, em nível de doutorado, de docentes oriundos do Campus II da
+            UFPB (atual UFCG) e de outras universidades brasileiras e as visitas de professores canadenses, por períodos
+            que variavam de três meses a um ano de permanência.</p>
+
+        <p>Desde seu início, a história da computação da UFCG (UFPB à época) é marcada pela forte interação com a
+            sociedade através da formação de recursos humanos para contribuir com a solução dos problemas regionais. Em
+            1973, em função da demanda da sociedade por profissionais qualificados na área de Computação e Informática e
+            da competência já instalada, foi criado o Curso de Formação de Técnicos de Nível Superior em Processamento
+            de Dados da UFPB, mesma época em que foram instalados os outros cursos também pioneiros no Brasil: PUC/RJ,
+            UFMG e UFRGS.</p>
+        <p>Você pode saber mais sobre a UFCG aqui: <a
+                href="http://www.computacao.ufcg.edu.br/departamento/historia">saiba mais</a></p>
+
+    </main>
+    <footer>
+        <ul>
+            <li><a href="http://github.com/henriqueca">Henrique's Github</a></li>
+            <li><a href="http://github.com/wesleymonte">Wesley's Github</a></li>
+            <li><a href="http://youtube.com/">Aprenda como usar o site! (ATUALIZAR)</a></li>
+            <li><a
+                    href="https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub">Especificações
+                    do projeto</a></li>
+        </ul>
+    </footer>
+
+    <script type="module" src="../javascript/controllers/UserController.js"></script>
+    <script type="module" src="../javascript/controllers/SearchController.js"></script>
+</body>
+
+</html>

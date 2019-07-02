@@ -5,22 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pesquisa - UCDb: Classificações e reviews de cursos da UFCG</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Página da disciplina - UCDb: Classificações e reviews de cursos da UFCG</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 
 <body>
     <header>
-            <h1>UCDb</h1>
-            <figure>
-                <img src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
-            </figure>
+        <h1>UCDb</h1>
+        <figure>
+            <img
+                src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
+        </figure>
         <nav>
             <ul>
                 <li><a href="./index.html">Página Inicial</a></li>
                 <li><a href="#" id="login">Login</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"> <button type="submit" id="search_button">Pesquisar</button></li>
+                <li><a href="./index.html#about">Sobre</a></li>
+                <li><a href="./ranking.html" id="ranking" hidden>Ranking</a></li>
+                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"> <button type="submit"
+                        id="search_button">Pesquisar</button></li>
             </ul>
         </nav>
     </header>
@@ -58,26 +61,37 @@
             <button type="submit" id="signup_button" disabled>Cadastrar</button>
         </form>
 
+
+        <h1 id="subject_name"></h1>
+
         <section>
-            <ul id="disciplines_list">
+            <button type="submit" id="like_button"></button>
+            <p>Total de Likes: <output id="total_likes"></output></p>
+            <p>Usuários que deram like:</p>
+            <ul id="users_likes">
 
             </ul>
         </section>
 
+        <input type="text" id="new_comment" maxlength="255">
+        <button type="submit" id="submit_comment" disabled>Adicionar comentário</button>
+        <section id="comments">
+
+        </section>
 
     </main>
     <footer>
-            <ul>
-                <li>Github do Henrique</li>
-                <li>Github do Wesley</li>
-                <li>Video sobre o site</li>
-                <li>Página do projeto</li>
-            </ul>
-        </footer>
+        <ul>
+            <li>Github do Henrique</li>
+            <li>Github do Wesley</li>
+            <li>Video sobre o site</li>
+            <li>Página do projeto</li>
+        </ul>
+    </footer>
 
-    <script type="module" src="./javascript/UserController.js"></script>
-    <script type="module" src="./javascript/SearchController.js"></script>
-    <script type="module" src="./javascript/ListDisciplines.js"></script>
+    <script type="module" src="../javascript/controllers/UserController.js"></script>
+    <script type="module" src="../javascript/controllers/SearchController.js"></script>
+    <script type="module" src="../javascript/views/Discipline.js"></script>
 </body>
 
 </html>
