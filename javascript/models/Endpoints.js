@@ -1,5 +1,5 @@
 const endpoints = {
-    host: "http://127.0.0.1:8080/api/",
+    host: "http://35.199.99.162:8080/api/",
 
     login() {
         return this.host + "v1/signin";

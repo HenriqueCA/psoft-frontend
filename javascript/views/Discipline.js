@@ -27,6 +27,8 @@ $new_comment_button.onclick = function () { adding_comment(false, $new_comment_t
 
 discipline_page(id);
 
+var user_email;
+
 async function adding_comment(reply, input, comment_id = 0) {
     let response;
     if (reply) {
@@ -37,7 +39,7 @@ async function adding_comment(reply, input, comment_id = 0) {
     if (response.status == 200) {
         let data = await response.text();
         let data_json = JSON.parse(data);
-        list_comments(data_json.commentList, data_json.email);
+        list_comments(data_json.commentList, user_email);
     }
 
     input.value = "";
@@ -48,13 +50,15 @@ async function discipline_page(id) {
     let response = await get_request(endpoints.subject(), "/" + id);
     if (response.status == 200) {
         let data = await response.text();
+        user_email = response.headers.get("Author");
         change_page(data);
     } else {
-        if (response.status == 401) {
+        if (response.status == 403 || response.status == 401) {
             window.localStorage.setItem("token", "");
-            alert("Sua sessão expirou!");
+            alert("Faça login novamente!");
+        } else {
+            alert("Acho que essa disciplina não existe.");
         }
-        alert("Acho que essa disciplina não existe.");
         document.location.href = "../../html/index.html";
     }
 }
@@ -64,8 +68,8 @@ function change_page(data) {
     $subject_name.innerHTML = data_json.name;
     $like_button.innerHTML = "Like";
 
-    change_like(data_json.likes, data_json.email);
-    list_comments(data_json.commentList, data_json.email);
+    change_like(data_json.likes, user_email);
+    list_comments(data_json.commentList, user_email);
 }
 
 function change_like(likes, email) {
@@ -112,7 +116,7 @@ function list_comments(comments, email) {
     remove_childs($comment_section);
 
     comments.forEach(comment => {
-        let ps_comment = create_comment(comment);
+        let ps_comment = create_comment(comment, email);
         $comment_section.appendChild(ps_comment);
 
         delete_button_comment(ps_comment, comment);
@@ -147,10 +151,10 @@ function list_comments(comments, email) {
         $comment_section.appendChild(send_reply);
 
         comment.replies.forEach(reply => {
-            let r = create_comment(reply);
-            delete_button_comment(r, comment);
+            let r = create_comment(reply, user_email);
             r.setAttribute("class", "comment_reply");
             $comment_section.appendChild(r);
+            delete_button_comment(r, reply);
         });
 
 
@@ -163,11 +167,10 @@ async function delete_button_comment(ps_comment, comment) {
         delete_button.hidden = false;
         delete_button.onclick = async function () {
             let response = await delete_comment(id, comment.id);
-            ps_comment.set_comment;
             if (response.status == 200) {
                 let data = await response.text();
                 let data_json = JSON.parse(data);
-                list_comments(data_json.commentList, data_json.email);
+                list_comments(data_json.commentList, user_email);
             }
         }
     }
@@ -183,7 +186,7 @@ async function like() {
     if (response.status == 200) {
         let data = await response.text();
         let data_json = JSON.parse(data);
-        change_like(data_json.likes, data_json.email);
+        change_like(data_json.likes, user_email);
         dislike_button();
     }
 }
@@ -193,7 +196,7 @@ async function dislike() {
     if (response.status == 200) {
         let data = await response.text();
         let data_json = JSON.parse(data);
-        change_like(data_json.likes, data_json.email);
+        change_like(data_json.likes, user_email);
         like_button();
     }
 }

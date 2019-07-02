@@ -23,7 +23,7 @@ class Comment extends HTMLElement {
             ${css}
             </style>
             <div>
-            <button hidden>delete</button>
+            <button hidden>Deletar</button>
             <p class="timestamp">${time_stamp}</p>
             <p class="user">${user}</p>
             <p class="comment">${comment}</p>
@@ -32,6 +32,9 @@ class Comment extends HTMLElement {
 
         this.comment_delete = this.shadowRoot.querySelector("button");
 
+        if (comment == "Comentário apagado!"){
+            this.comment_delete.remove();
+        }
 
     }
 
@@ -39,8 +42,13 @@ class Comment extends HTMLElement {
         return this.comment_delete;
     }
     set set_comment(msg){
-        console.log("setando!");
         this.shadowRoot.querySelector(".comment").value = "Comentário apagado!";
+    }
+
+    set remove_button(msg){
+        console.log("REMOVENDO");
+        this.shadowRoot.innerHTML = "";
+        console.log(this.comment_delete);
     }
 
 

@@ -2,8 +2,10 @@ import { get_request } from "../models/Requests.js";
 
 async function get_disciplines(endpoint, crescent, substring, node, param) {
     let response = await get_request(endpoint, "?" + param + "=" + substring);
-    let body = await response.text();
-    list_disciplines(crescent, body, node);
+    if (response.status == 200){
+        let body = await response.text();
+        list_disciplines(crescent, body, node);
+    }
 }
 
 function list_disciplines(order, disciplines, node) {

@@ -100,7 +100,7 @@ async function signin_response(response) {
         close_forms();
         let token = response.headers.get('Authorization');
         window.localStorage.setItem("token", token);
-        location.reload();
+        document.location.href= "../../html/index.html";
 
     }
     else {
