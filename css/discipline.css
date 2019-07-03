@@ -1,0 +1,53 @@
+body {
+    grid-template-rows: 0.5fr 0.5fr 0.3fr 0.1fr;
+}
+#like_button{
+    border: none;
+    padding:1%;
+    border-radius: 10%;
+}
+
+.like {
+    background-color: green;
+}
+.like:hover{
+    background-color:lightgreen;
+}
+
+.dislike {
+    background-color: red;
+}
+.dislike:hover{
+    background-color:rgb(252, 130, 130);
+}
+
+output {
+    color: green;
+}
+
+#new_comment {
+    width: 20%;
+    padding: 1%;
+    margin: 1%;
+    border: none;
+    border-radius: 3px;
+    background-color:rgb(232, 239, 247);
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#new_comment:focus{
+    width: 90%;   
+}
+
+#submit_comment {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    padding:0.5%;
+    margin:1%;
+}
+
+#submit_comment:hover{
+    background-color: antiquewhite;
+}

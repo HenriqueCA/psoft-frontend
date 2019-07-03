@@ -25,7 +25,7 @@ class Comment extends HTMLElement {
             <div>
             <button hidden>Deletar</button>
             <p class="timestamp">${time_stamp}</p>
-            <p class="user">${user}</p>
+            <p class="user">Email: ${user}</p>
             <p class="comment">${comment}</p>
             </div>
             `
@@ -69,6 +69,8 @@ class Comment extends HTMLElement {
     css() {
         let style = `
         div {
+            margin: 1%;
+            background-color: #9dc6c9;
             display: grid;
             border: 1px solid black;
             border-radius: 10px;
@@ -79,10 +81,15 @@ class Comment extends HTMLElement {
         }
 
         .timestamp{
+            color: black;
+            font-weight: bold;
             grid-row: 1/2;
             grid-column:1/2;
+            margin: 4%;
+            border: 4%;
         }
         .user{
+            font-weight: bold;
             grid-row: 1/2;
             grid-column: 2/3;
         }
@@ -94,6 +101,9 @@ class Comment extends HTMLElement {
             grid-row: 1/2
             grid-column: 3/4;
             justify-self: right;
+            background-color: red;
+            border: none;
+            border-radius: 3px;
         }
         `
         return style;

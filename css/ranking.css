@@ -1,0 +1,53 @@
+#ranking_drop_down {
+    background-color:lightseagreen;
+    border-radius: 3px;
+    border: none;
+}
+#ranking_drop_down:hover{
+    background-color:rgb(51, 255, 245);
+}
+#order_drop_down {
+    background-color:lightseagreen;
+    border-radius: 3px;
+    border: none;
+}
+#order_drop_down:hover{
+    background-color:rgb(51, 255, 245);
+}
+main {
+    padding: 1%;
+}
+
+main ul {
+    padding: 1%;
+}
+
+main ul a {
+    border-radius: 3px;
+    padding: 0.5px;
+    margin: 1%;
+}
+
+#order_likes, #order_comments, #crescent_order, #decrescent_order{
+    background-color:steelblue;
+}
+output {
+    color:green;
+    font-weight: bold;
+}
+
+main ul li {
+    background-color: khaki;
+    padding: 1%;
+    margin: 1%;
+    border: 1%;
+}
+main ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+main ul li:hover{
+    cursor: pointer;
+    background-color:rgb(243, 237, 179);
+
+}

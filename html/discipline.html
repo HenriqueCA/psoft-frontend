@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Página da disciplina - UCDb: Classificações e reviews de cursos da UFCG</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/discipline.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -31,57 +32,66 @@
     </header>
 
     <main>
+            <form id="login_popup" class="popup" hidden>
 
-        <form id="login_popup" class="popup" hidden>
-            <a href="#" class="close_popup">Fechar</a>
+                    <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <figure>
+                        <img
+                            src="https://cdn1.iconfinder.com/data/icons/ringtone-music-instruments/512/user-login-comfirm-accept-person-id-green-512.png">
+                    </figure>
+        
+                    <input type="email" placeholder="Email" id="login_email">
+                    <input type="password" placeholder="Senha" id="login_password">
+                    <button type="submit" id="login_button">Entrar</button>
+        
+                    <p>Não tem conta? Faça agora mesmo!</p>
+                    <a id="signup">Cadastrar</a>
+                </form>
+        
+                <form id="signup_popup" class="popup" hidden>
+                    <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <figure>
+                        <img
+                            src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-male2-512.png">
+                    </figure>
+        
+                    <input type="text" placeholder="Nome" id="fname">
+        
+                    <input type="text" placeholder="Sobrenome" id="lname">
+        
+                    <input type="email" placeholder="Email" id="email">
+        
+                    <input type="password" placeholder="Senha" id="password">
+        
+                    <input type="password" placeholder="Confirme sua senha" id="confirm_password">
+        
+                    <button type="submit" id="signup_button" disabled>Cadastrar</button>
+                </form>
 
-            <input type="email" placeholder="Email" id="login_email">
-            <input type="password" placeholder="Senha" id="login_password">
-            <button type="submit" id="login_button">Entrar</button>
+        <h1 id="subject_name"> Disciplina </h1>
 
-            <p>Não tem conta? Faça agora mesmo! <a href="#" id="signup">Cadastrar</a></p>
-        </form>
-
-        <form id="signup_popup" class="popup" hidden>
-            <a href="#" class="close_popup">Fechar</a>
-
-            <label for="fname">Nome</label>
-            <input type="text" placeholder="Nome" id="fname">
-
-            <label for="lname">Sobrenome</label>
-            <input type="text" placeholder="Sobrenome" id="lname">
-
-            <label for="email">Email</label>
-            <input type="email" placeholder="Email" id="email">
-
-            <label for="password">Senha</label>
-            <input type="password" placeholder="Senha" id="password">
-
-            <label for="confirm_password">Confirme sua senha</label>
-            <input type="password" placeholder="Senha" id="confirm_password">
-
-            <button type="submit" id="signup_button" disabled>Cadastrar</button>
-        </form>
-
-
-        <h1 id="subject_name"></h1>
-
-        <section>
-            <button type="submit" id="like_button"></button>
-            <p>Total de Likes: <output id="total_likes"></output></p>
-            <p>Usuários que deram like:</p>
-            <ul id="users_likes">
-
-            </ul>
-        </section>
-
-        <input type="text" id="new_comment" maxlength="255">
-        <button type="submit" id="submit_comment" disabled>Adicionar comentário</button>
-        <section id="comments">
-
-        </section>
+        <button type="submit" id="like_button" class="like">Like <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        </button>
+        <p>Total de Likes: <output id="total_likes"></output></p>
+        <p>Usuários que deram like:</p>
+        <ul id="users_likes">
+        </ul>
 
     </main>
+
+    <section>
+        <input type="text" id="new_comment" placeholder="Escreva aqui seu comentário" maxlength="255">
+        <button type="submit" id="submit_comment" disabled>Adicionar comentário</button>
+
+        <ul id="comments">
+            <ps-comment comment="comentário" user="oi@gmail.com" timestamp="25/07/2019 25:10:10"></ps-comment>
+            <ps-comment comment="comentário" user="oi@gmail.com" timestamp="25/07/2019 25:10:10"></ps-comment>
+            <ps-comment comment="comentário" user="oi@gmail.com" timestamp="25/07/2019 25:10:10"></ps-comment>
+            <ps-comment comment="comentário" user="oi@gmail.com" timestamp="25/07/2019 25:10:10"></ps-comment>
+
+        </ul>
+    </section>
+
     <footer>
         <ul>
             <li><a href="http://github.com/henriqueca"><i class="fa fa-github" aria-hidden="true"></i>
@@ -97,7 +107,7 @@
         </ul>
     </footer>
 
-    <script type="module" src="../javascript/controllers/UserController.js"></script>
+    <script type="module" src="../javascript/views/Account.js"></script>
     <script type="module" src="../javascript/controllers/SearchController.js"></script>
     <script type="module" src="../javascript/views/Discipline.js"></script>
 </body>

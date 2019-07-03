@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ranking - UCDb: Classificações e reviews de cursos da UFCG</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/ranking.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -32,37 +33,41 @@
 
     <main>
 
-        <form id="login_popup" class="popup" hidden>
-            <a href="#" class="close_popup">Fechar</a>
+            <form id="login_popup" class="popup" hidden>
 
-            <input type="email" placeholder="Email" id="login_email">
-            <input type="password" placeholder="Senha" id="login_password">
-            <button type="submit" id="login_button">Entrar</button>
-
-            <p>Não tem conta? Faça agora mesmo! <a href="#" id="signup">Cadastrar</a></p>
-        </form>
-
-        <form id="signup_popup" class="popup" hidden>
-            <a href="#" class="close_popup">Fechar</a>
-
-            <label for="fname">Nome</label>
-            <input type="text" placeholder="Nome" id="fname">
-
-            <label for="lname">Sobrenome</label>
-            <input type="text" placeholder="Sobrenome" id="lname">
-
-            <label for="email">Email</label>
-            <input type="email" placeholder="Email" id="email">
-
-            <label for="password">Senha</label>
-            <input type="password" placeholder="Senha" id="password">
-
-            <label for="confirm_password">Confirme sua senha</label>
-            <input type="password" placeholder="Senha" id="confirm_password">
-
-            <button type="submit" id="signup_button" disabled>Cadastrar</button>
-        </form>
-
+                    <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <figure>
+                        <img
+                            src="https://cdn1.iconfinder.com/data/icons/ringtone-music-instruments/512/user-login-comfirm-accept-person-id-green-512.png">
+                    </figure>
+        
+                    <input type="email" placeholder="Email" id="login_email">
+                    <input type="password" placeholder="Senha" id="login_password">
+                    <button type="submit" id="login_button">Entrar</button>
+        
+                    <p>Não tem conta? Faça agora mesmo!</p>
+                    <a id="signup">Cadastrar</a>
+                </form>
+        
+                <form id="signup_popup" class="popup" hidden>
+                    <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <figure>
+                        <img
+                            src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-male2-512.png">
+                    </figure>
+        
+                    <input type="text" placeholder="Nome" id="fname">
+        
+                    <input type="text" placeholder="Sobrenome" id="lname">
+        
+                    <input type="email" placeholder="Email" id="email">
+        
+                    <input type="password" placeholder="Senha" id="password">
+        
+                    <input type="password" placeholder="Confirme sua senha" id="confirm_password">
+        
+                    <button type="submit" id="signup_button" disabled>Cadastrar</button>
+                </form>
 
         <a id="ranking_drop_down">Ranking</a>
         <ul>
@@ -79,10 +84,12 @@
             <output id="crescent"></output>, ou seja, a primeira disciplina listada abaixo é a com <output
                 id="maior_menor"></output> número de <output class="ranking_by"></output></p>
 
-        <section>
-            <ul id="disciplines"></ul>
+        <ul id="disciplines">
+            <li><a>Teste</a></li>
+            <li><a>Teste</a></li>
+            <li><a>Teste</a></li>
+        </ul>
 
-        </section>
 
 
     </main>
@@ -101,7 +108,7 @@
         </ul>
     </footer>
 
-    <script type="module" src="../javascript/controllers/UserController.js"></script>
+    <script type="module" src="../javascript/views/Account.js"></script>
     <script type="module" src="../javascript/controllers/SearchController.js"></script>
     <script type="module" src="../javascript/views/Ranking.js"></script>
 </body>

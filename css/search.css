@@ -1,0 +1,14 @@
+main ul li {
+    background-color: khaki;
+    padding: 1%;
+    margin: 1%;
+    border: 1%;
+}
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+main ul li:hover{
+    cursor: pointer;
+    background-color:rgb(243, 237, 179);
+}

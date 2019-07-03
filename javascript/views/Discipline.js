@@ -25,6 +25,13 @@ $new_comment_text.onkeyup = function () { validate_comment($new_comment_text.val
 
 $new_comment_button.onclick = function () { adding_comment(false, $new_comment_text) };
 
+$new_comment_text.addEventListener("keyup", function(e){
+    if(e.keyCode ===13){
+        e.preventDefault();
+        $new_comment_button.click();
+    }
+})
+
 discipline_page(id);
 
 var user_email;
@@ -203,10 +210,12 @@ async function dislike() {
 
 function dislike_button() {
     $like_button.innerHTML = "Remover o Like";
+    $like_button.setAttribute("class","dislike");
     $like_button.onclick = dislike;
 }
 
 function like_button() {
     $like_button.innerHTML = "Like"
+    $like_button.setAttribute("class","like");
     $like_button.onclick = like;
 }

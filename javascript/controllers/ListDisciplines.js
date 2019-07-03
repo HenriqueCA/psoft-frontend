@@ -19,6 +19,7 @@ function list_disciplines(order, disciplines, node) {
         a.setAttribute("href", "../../html/discipline.html?id=" + element.id)
         a.innerHTML = element.name;
         let li = document.createElement("li");
+        li.onclick = function(){ a.click() };
         li.appendChild(a);
         node.appendChild(li);
     });
