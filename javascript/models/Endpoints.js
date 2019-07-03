@@ -1,3 +1,6 @@
+/**
+ * Model com os endpoins das requisições à API.
+ */
 const endpoints = {
     host: "http://35.199.99.162:8080/api/",
 
@@ -10,7 +13,7 @@ const endpoints = {
     subject() {
         return this.host + "v1/subject";
     },
-    ranking(){
+    ranking() {
         return this.subject() + "/ranking";
     }
 

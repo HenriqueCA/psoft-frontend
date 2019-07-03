@@ -4,7 +4,7 @@ main ul li {
     margin: 1%;
     border: 1%;
 }
-a {
+main a {
     text-decoration: none;
     text-transform: uppercase;
 }
