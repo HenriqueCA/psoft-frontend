@@ -104,7 +104,6 @@ async function signin_response(response) {
 
     }
     else {
-        let response_text = await response.text();
         alert("Seu login está errado ou você não tem conta.");
     }
 }
@@ -122,10 +121,12 @@ async function sign_in() {
 
 async function signup_response(response) {
     let response_text = await response.text();
-    let data = JSON.parse(response_text);
-    alert(data.msg);
     if (response.status == 200) {
+        alert(data.msg);
+        let data = JSON.parse(response_text);
         close_forms();
+    }else{
+        alert("Não foi possível completar o cadastro.");
     }
 }
 

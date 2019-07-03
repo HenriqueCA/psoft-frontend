@@ -10,11 +10,11 @@ $search_text.addEventListener("keyup", function(e){
     }
 })
 
-async function search_substring(search_text) {
+function search_substring(search_text) {
     document.location.href = "../../html/search.html?search=" + search_text;
 }
 
-async function search_code(search_id) {
+function search_code(search_id) {
     document.location.href = "../../html/discipline.html?id=" + search_id;
 }
 
