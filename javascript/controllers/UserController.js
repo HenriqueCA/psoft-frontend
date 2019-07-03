@@ -104,7 +104,6 @@ async function signin_response(response) {
 
     }
     else {
-        let response_text = await response.text();
         alert("Seu login está errado ou você não tem conta.");
     }
 }

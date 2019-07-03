@@ -7,9 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UCDb: Classificações e reviews de cursos da UFCG</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
+
     <header>
         <h1>UCDb</h1>
         <figure>
@@ -19,47 +21,51 @@
         <nav>
             <ul id="nav_list">
                 <li><a href="./index.html" class="current">Página Inicial</a></li>
-                <li><a href="#" id="login">Login</a></li>
                 <li><a href="#about">Sobre</a></li>
+                <li><a id="login">Login</a></li>
                 <li><a href="./ranking.html" id="ranking" hidden>Ranking</a></li>
-                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"><button type="submit"
-                        id="search_button">Pesquisar</button></li>
             </ul>
+            <input type="text" placeholder="Pesquisar..." id="search_text">
+            <button type="submit" id="search_button"><i class="fa fa-search"></i></button>
         </nav>
     </header>
 
     <main>
 
         <form id="login_popup" class="popup" hidden>
-            <a href="#" class="close_popup">Fechar</a>
+            <a class="close_popup">Fechar</a>
+            <figure>
+                <img
+                    src="https://cdn1.iconfinder.com/data/icons/ringtone-music-instruments/512/user-login-comfirm-accept-person-id-green-512.png">
+            </figure>
 
             <input type="email" placeholder="Email" id="login_email">
             <input type="password" placeholder="Senha" id="login_password">
             <button type="submit" id="login_button">Entrar</button>
 
-            <p>Não tem conta? Faça agora mesmo! <a href="#" id="signup">Cadastrar</a></p>
+            <p>Não tem conta? Faça agora mesmo! <a id="signup">Cadastrar</a></p>
         </form>
 
-        <form id="signup_popup" class="popup" hidden>
-            <a href="#" class="close_popup">Fechar</a>
+        <form id="signup_popup" class="popup">
+            <a class="close_popup">Fechar</a>
+            <figure>
+                <img
+                    src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-male2-512.png">
+            </figure>
 
-            <label for="fname">Nome</label>
             <input type="text" placeholder="Nome" id="fname">
 
-            <label for="lname">Sobrenome</label>
             <input type="text" placeholder="Sobrenome" id="lname">
 
-            <label for="email">Email</label>
             <input type="email" placeholder="Email" id="email">
 
-            <label for="password">Senha</label>
             <input type="password" placeholder="Senha" id="password">
 
-            <label for="confirm_password">Confirme sua senha</label>
-            <input type="password" placeholder="Senha" id="confirm_password">
+            <input type="password" placeholder="Confirme sua senha" id="confirm_password">
 
             <button type="submit" id="signup_button" disabled>Cadastrar</button>
         </form>
+
 
         <h2>UCDb: Classificações e reviews de cursos da UFCG</h2>
         <p>UCDb é um site voltado para os cursos de computação da Universidade Federal de Campina Grande.</p>
@@ -107,13 +113,18 @@
                 href="http://www.computacao.ufcg.edu.br/departamento/historia">saiba mais</a></p>
 
     </main>
+
     <footer>
         <ul>
-            <li><a href="http://github.com/henriqueca">Henrique's Github</a></li>
-            <li><a href="http://github.com/wesleymonte">Wesley's Github</a></li>
-            <li><a href="http://youtube.com/">Aprenda como usar o site! (ATUALIZAR)</a></li>
+            <li><a href="http://github.com/henriqueca"><i class="fa fa-github" aria-hidden="true"></i>
+                    Henrique</a></li>
+            <li><a href="http://github.com/wesleymonte"><i class="fa fa-github" aria-hidden="true"></i>Wesley</a></li>
+            <li><a href="http://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Aprenda como usar o site! (ATUALIZAR)</a></li>
             <li><a
-                    href="https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub">Especificações
+                    href="https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub"><i
+                        class="fa fa-google" aria-hidden="true"></i>
+                    Especificações
                     do projeto</a></li>
         </ul>
     </footer>

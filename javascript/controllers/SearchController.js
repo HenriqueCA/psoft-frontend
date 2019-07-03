@@ -3,6 +3,13 @@ const $search_button = document.querySelector("#search_button");
 
 $search_button.onclick = search;
 
+$search_text.addEventListener("keyup", function(e){
+    if(e.keyCode ===13){
+        e.preventDefault();
+        $search_button.click();
+    }
+})
+
 async function search_substring(search_text) {
     document.location.href = "../../html/search.html?search=" + search_text;
 }

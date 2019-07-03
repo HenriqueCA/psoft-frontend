@@ -7,9 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ranking - UCDb: Classificações e reviews de cursos da UFCG</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
+
     <header>
         <h1>UCDb</h1>
         <figure>
@@ -18,13 +20,13 @@
         </figure>
         <nav>
             <ul id="nav_list">
-                <li><a href="./index.html">Página Inicial</a></li>
-                <li><a href="#" id="login">Login</a></li>
+                <li><a href="./index.html" class="current">Página Inicial</a></li>
                 <li><a href="./index.html#about">Sobre</a></li>
-                <li><a href="./ranking.html" id="ranking" class="current" hidden>Ranking</a></li>
-                <li><input type="text" placeholder="Pesquise aqui..." id="search_text"> <button type="submit"
-                        id="search_button">Pesquisar</button></li>
+                <li><a href="#" id="login">Login</a></li>
+                <li><a href="./ranking.html" id="ranking" hidden>Ranking</a></li>
             </ul>
+            <input type="text" placeholder="Pesquisar..." id="search_text">
+            <button type="submit" id="search_button"><i class="fa fa-search"></i></button>
         </nav>
     </header>
 
@@ -86,10 +88,16 @@
     </main>
     <footer>
         <ul>
-            <li>Github do Henrique</li>
-            <li>Github do Wesley</li>
-            <li>Video sobre o site</li>
-            <li>Página do projeto</li>
+            <li><a href="http://github.com/henriqueca"><i class="fa fa-github" aria-hidden="true"></i>
+                    Henrique</a></li>
+            <li><a href="http://github.com/wesleymonte"><i class="fa fa-github" aria-hidden="true"></i>Wesley</a></li>
+            <li><a href="http://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    Aprenda como usar o site! (ATUALIZAR)</a></li>
+            <li><a
+                    href="https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub"><i
+                        class="fa fa-google" aria-hidden="true"></i>
+                    Especificações
+                    do projeto</a></li>
         </ul>
     </footer>
 
