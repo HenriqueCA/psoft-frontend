@@ -1,3 +1,8 @@
+/**
+ * Classe utilizada para fazer um componente customizável de comentários.
+ * Ao colocar o objeto no DOM, o style do comentário é feito caso o objeto seja do usuário e/ou uma resposta à outro comentário.
+ */
+
 class Comment extends HTMLElement {
     constructor() {
         super();
@@ -5,6 +10,9 @@ class Comment extends HTMLElement {
         this.comment_delete = null;
     }
 
+    /**
+     * Chamado quando o componente é colocado no DOM.
+     */
     connectedCallback() {
         const comment = this.getAttribute("comment");
         const user = this.getAttribute("user");
@@ -14,14 +22,14 @@ class Comment extends HTMLElement {
 
         const reply = this.hasAttribute("commentreply");
 
-  
+
         let css = this.css();
 
         if (is_from_user) {
             css += this.user_css();
         }
 
-        if (reply){
+        if (reply) {
             css += this.reply_css()
         }
 
@@ -39,26 +47,24 @@ class Comment extends HTMLElement {
 
         this.comment_delete = this.shadowRoot.querySelector("button");
 
-        if (comment == "Comentário apagado!"){
+        if (comment == "Comentário apagado!") {
             this.comment_delete.remove();
         }
 
     }
 
-    get get_button(){
+    get get_button() {
         return this.comment_delete;
     }
-    set set_comment(msg){
+
+    set set_comment(msg) {
         this.shadowRoot.querySelector(".comment").value = "Comentário apagado!";
     }
 
-    set remove_button(msg){
-        console.log("REMOVENDO");
-        this.shadowRoot.innerHTML = "";
-        console.log(this.comment_delete);
-    }
-
-    reply_css() { 
+    /**
+     * Usado para estilizar o componente se for resposta
+     */
+    reply_css() {
 
         let style = `
         div {
@@ -72,6 +78,9 @@ class Comment extends HTMLElement {
     }
 
 
+    /**
+     * Usado para estilizar o componente se for do usuário
+     */
     user_css() {
 
         let style = `
@@ -85,6 +94,9 @@ class Comment extends HTMLElement {
 
     }
 
+    /**
+     * Estilo padrão do componente.
+     */
     css() {
         let style = `
         div {

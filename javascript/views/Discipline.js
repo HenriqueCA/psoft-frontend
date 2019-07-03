@@ -3,25 +3,23 @@ import endpoints from "../models/Endpoints.js";
 import { get_request, post_request, delete_request } from "../models/Requests.js";
 import { add_new_comment, reply_comment, delete_comment } from "../controllers/CommentController.js";
 
+// Define o custom component.
 customElements.define("ps-comment", Comment);
 
-var url_params = new URLSearchParams(window.location.search);
-
-var id = url_params.get("id");
-
+// Pega os elementos da DOM.
 const $subject_name = document.querySelector("#subject_name");
 const $like_button = document.querySelector("#like_button");
 const $total_likes = document.querySelector("#total_likes");
-
 const $new_comment_text = document.querySelector("#new_comment");
 const $new_comment_button = document.querySelector("#submit_comment");
-
 const $comment_section = document.querySelector("#comments");
 
 $like_button.onclick = like;
 
+// Adiciona um novo comentário caso o botão de novo comentário seja clicado.
 $new_comment_button.onclick = function () { adding_comment(false, $new_comment_text) };
 
+// Se apertar ENTER, clica no botão.
 $new_comment_text.addEventListener("keyup", function (e) {
     if (e.keyCode === 13) {
         e.preventDefault();
@@ -31,25 +29,27 @@ $new_comment_text.addEventListener("keyup", function (e) {
 
 var user_email;
 
+// Pega os parâmetros da página
+var url_params = new URLSearchParams(window.location.search);
+var id = url_params.get("id");
+
 discipline_page(id);
 
-
-async function verify_like() {
-    let response = await post_request(endpoints.subject() + "/" + id + "/like", {});
-    if (response.status == 200) {
-        dislike();
-    } else {
-        dislike_button();
-    }
-}
-
+/**
+ * Adiciona um comentário na página da disciplina, verificando se é um comentário resposta ou não.
+ * @param {boolean} reply booleano representando se é um comentário resposta.
+ * @param {HTMLElement} input elemento com a mensagem.
+ * @param {string} comment_id id do comentário que vai responder, caso seja uma resposta.
+ */
 async function adding_comment(reply, input, comment_id = 0) {
     let response;
+
     if (reply) {
         response = await reply_comment(id, input.value, comment_id);
     } else {
         response = await add_new_comment(id, input.value);
     }
+
     if (response.status == 200) {
         let data = await response.text();
         let data_json = JSON.parse(data);
@@ -57,9 +57,12 @@ async function adding_comment(reply, input, comment_id = 0) {
     }
 
     input.value = "";
-
 }
 
+/**
+ * Começa a popular a página com o perfil da disciplina.
+ * @param {string} id id da disciplina
+ */
 async function discipline_page(id) {
     let response = await get_request(endpoints.subject(), "/" + id);
     if (response.status == 200) {
@@ -67,32 +70,57 @@ async function discipline_page(id) {
         user_email = response.headers.get("Author");
         change_page(data);
     } else {
+        alert("É preciso estar logado para entrar aqui!");
         window.localStorage.setItem("token", "");
-        alert("Algo deu errado...");
         document.location.href = "../../html/index.html";
     }
 }
 
+/**
+ * Popula a pagina com dados vindos de um request.
+ * @param {JSON} data json com os dados da página.
+ */
 function change_page(data) {
     let data_json = JSON.parse(data);
     $subject_name.innerHTML = data_json.name;
-    verify_like();
-
+    verify_like(data_json.userLike);
     change_like(data_json.likes);
     list_comments(data_json.commentList, user_email);
 }
 
+/**
+ * Altera o total de likes da disciplina.
+ * @param {string} likes quantidade de likes
+ */
 function change_like(likes) {
     $total_likes.innerHTML = likes;
-
 }
 
+/**
+ * Verifica se o usuário já deu like na disciplina e muda o botão de like para remover like.
+ * @param {boolean} userLike se o usuário já deu like
+ */
+function verify_like(userLike) {
+    if (userLike) {
+        dislike_button();
+    }
+}
+
+/**
+ * remove todos os filhos de um elemento.
+ * @param {HTMLElement} node elemento HTML.
+ */
 function remove_childs(node) {
     while (node.firstChild) {
         node.removeChild(node.firstChild);
     }
 }
 
+/**
+ * Cria um comentário com web components.
+ * @param {JSON} comment JSON de um comentário
+ * @param {string} email email do usuário que está acessando a página
+ */
 function create_comment(comment, email) {
     let ps_comment = document.createElement("ps-comment");
     if (comment.msg == "") {
@@ -110,6 +138,11 @@ function create_comment(comment, email) {
     return ps_comment;
 }
 
+/**
+ * Lista os comentários na seção de comentários.
+ * @param {JSON} comments JSON com comentários.
+ * @param {string} email email do usuário que acessou a página.
+ */
 function list_comments(comments, email) {
 
     remove_childs($comment_section);
@@ -164,6 +197,11 @@ function list_comments(comments, email) {
     });
 }
 
+/**
+ * Verifica a necessidade de adicionar o botão de deletar comentário.
+ * @param {HTMLElement} ps_comment elemento de comentário.
+ * @param {JSON} comment json do comentário.
+ */
 async function delete_button_comment(ps_comment, comment) {
     if (ps_comment.hasAttribute("isfromuser")) {
         let delete_button = ps_comment.get_button;
@@ -179,33 +217,44 @@ async function delete_button_comment(ps_comment, comment) {
     }
 }
 
-
+/**
+ * Faz um request para a API dando like na disciplina.
+ */
 async function like() {
     let response = await post_request(endpoints.subject() + "/" + id + "/like", {});
     if (response.status == 200) {
         let data = await response.text();
         let data_json = JSON.parse(data);
-        change_like(data_json.likes, user_email);
+        change_like(data_json.likes);
         dislike_button();
     }
 }
 
-async function dislike() {
+/**
+ * Faz um request para a API removendo o like na disciplina.
+ */
+async function remove_like() {
     let response = await delete_request(endpoints.subject(), "/" + id + "/like");
     if (response.status == 200) {
         let data = await response.text();
         let data_json = JSON.parse(data);
-        change_like(data_json.likes, user_email);
+        change_like(data_json.likes);
         like_button();
     }
 }
 
+/**
+ * Muda o botão de like para virar um botão de remover o like.
+ */
 function dislike_button() {
     $like_button.innerHTML = "Remover o Like";
     $like_button.setAttribute("class", "dislike");
-    $like_button.onclick = dislike;
+    $like_button.onclick = remove_like;
 }
 
+/**
+ * Muda o botão de remover o like para virar um botão de dar like.
+ */
 function like_button() {
     $like_button.innerHTML = "Like"
     $like_button.setAttribute("class", "like");
