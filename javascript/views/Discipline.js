@@ -144,6 +144,12 @@ function list_comments(comments, email) {
         send_reply.setAttribute("disabled", true);
 
         reply_input.onkeyup = function () { validate_comment(reply_input.value, send_reply) };
+        reply_input.addEventListener("keyup", function(e){
+            if(e.keyCode ===13){
+                e.preventDefault();
+                send_reply.click();
+            }
+        });
 
         send_reply.onclick = function () { adding_comment(true, reply_input, comment.id) };
 

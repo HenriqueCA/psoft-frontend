@@ -1,7 +1,8 @@
 body {
-    grid-template-rows: 0.5fr 0.5fr 0.3fr 0.1fr;
+    grid-template-rows: 0.1fr 0.5fr 0.1fr 0.1fr;
 }
 #like_button{
+    margin: 1%;
     border: none;
     padding:1%;
     border-radius: 10%;
@@ -25,7 +26,7 @@ output {
     color: green;
 }
 
-#new_comment {
+section input {
     width: 20%;
     padding: 1%;
     margin: 1%;
@@ -36,11 +37,11 @@ output {
     transition: width 0.4s ease-in-out;
 }
 
-#new_comment:focus{
-    width: 90%;   
+section input:focus{
+    width: 60%;   
 }
 
-#submit_comment {
+section button {
     background-color: white;
     border: none;
     border-radius: 4px;
@@ -48,6 +49,6 @@ output {
     margin:1%;
 }
 
-#submit_comment:hover{
+section button:hover{
     background-color: antiquewhite;
 }
