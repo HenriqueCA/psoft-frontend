@@ -141,6 +141,7 @@ form {
 }
 
 form a, button, input {
+    box-sizing: border-box;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -149,13 +150,48 @@ form a, button, input {
     width: 100%;
 }
 
+form input {
+    background-color: transparent;
+    border-color: transparent;
+    border-block-end-color: white;
+    border-block-end-style:ridge;
+    text-align: center;
+    padding: 1%;
+}
+
+::placeholder{
+    text-align: center;
+}
+
+form button {
+    background: #43D1AF;
+    border:none;
+    font-size: 100%;
+    font-weight: bolder;
+    padding: 1%;
+}
+
 form img {
     text-align: center;
     width: 40%;
     height: 40%;
 }
 
-a:hover {
+form .close_popup {
+    text-align: end;
+    font-size: 150%;
+    padding: 1%;
+} 
+
+#signup {
+    background-color: #43D1AF;
+    color: white;
+    font-weight: bold;
+    padding: 1%;
+    border: 0%;
+}
+
+a:hover, button:hover {
     cursor: pointer;
 }
 
