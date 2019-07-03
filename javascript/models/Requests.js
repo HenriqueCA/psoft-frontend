@@ -11,6 +11,8 @@ async function post_request(endpoint, body) {
         },
         body: string_body
     });
+    console.log(response);
+
 
     return response;
 
