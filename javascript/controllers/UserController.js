@@ -39,6 +39,20 @@ $email.onkeyup = validate_signup;
 $password.onkeyup = validate_signup;
 $confirm_password.onkeyup = validate_signup;
 
+$login_password.addEventListener("keyup", function(e){
+    if(e.keyCode ===13){
+        e.preventDefault();
+        $login_button.click();
+    }
+})
+
+$confirm_password.addEventListener("keyup", function(e){
+    if(e.keyCode ===13){
+        e.preventDefault();
+        $signup_button.click();
+    }
+})
+
 var user_token = window.localStorage.getItem("token");
 
 validate_token(user_token);

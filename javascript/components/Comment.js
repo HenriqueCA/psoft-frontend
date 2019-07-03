@@ -104,6 +104,11 @@ class Comment extends HTMLElement {
             background-color: red;
             border: none;
             border-radius: 3px;
+            color: white;
+        }
+
+        button:hover {
+            cursor:pointer;
         }
         `
         return style;
