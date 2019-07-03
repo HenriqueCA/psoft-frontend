@@ -1,5 +1,5 @@
 body {
-    grid-template-rows: 0.1fr 0.5fr 0.1fr 0.1fr;
+    grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr;
 }
 #like_button{
     margin: 1%;
@@ -46,7 +46,7 @@ section button {
     border: none;
     border-radius: 4px;
     padding:0.5%;
-    margin:1%;
+    margin: 0;
 }
 
 section button:hover{

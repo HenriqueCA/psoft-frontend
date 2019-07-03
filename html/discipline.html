@@ -16,8 +16,7 @@
     <header>
         <h1>UCDb</h1>
         <figure>
-            <img
-                src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
+            <img src="https://lh3.googleusercontent.com/6JMfyFJkhU_Dmra1R8oa743nW5CaJ-2S6tRrdtGy7nYYCIidph6C8LTFbQr4YtX6BcGdYuLL-6CQrrHB043w51lqaKlpDYGOlgRkV8bxgvgGup9FShC0a9TTY_ckR_pnlafIv1Nz">
         </figure>
         <nav>
             <ul id="nav_list">
@@ -32,56 +31,52 @@
     </header>
 
     <main>
-            <form id="login_popup" class="popup" hidden>
+        <form id="login_popup" class="popup" hidden>
 
-                    <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    <figure>
-                        <img
-                            src="https://cdn1.iconfinder.com/data/icons/ringtone-music-instruments/512/user-login-comfirm-accept-person-id-green-512.png">
-                    </figure>
-        
-                    <input type="email" placeholder="Email" id="login_email">
-                    <input type="password" placeholder="Senha" id="login_password">
-                    <button type="button" id="login_button">Entrar</button>
-        
-                    <p>Não tem conta? Faça agora mesmo!</p>
-                    <a id="signup">Cadastrar</a>
-                </form>
-        
-                <form id="signup_popup" class="popup" hidden>
-                    <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    <figure>
-                        <img
-                            src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-male2-512.png">
-                    </figure>
-        
-                    <input type="text" placeholder="Nome" id="fname">
-        
-                    <input type="text" placeholder="Sobrenome" id="lname">
-        
-                    <input type="email" placeholder="Email" id="email">
-        
-                    <input type="password" placeholder="Senha" id="password">
-        
-                    <input type="password" placeholder="Confirme sua senha" id="confirm_password">
-        
-                    <button type="button" id="signup_button" disabled>Cadastrar</button>
-                </form>
+            <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <figure>
+                <img src="https://cdn1.iconfinder.com/data/icons/ringtone-music-instruments/512/user-login-comfirm-accept-person-id-green-512.png">
+            </figure>
+
+            <input type="email" placeholder="Email" id="login_email">
+            <input type="password" placeholder="Senha" id="login_password">
+            <button type="button" id="login_button">Entrar</button>
+
+            <p>Não tem conta? Faça agora mesmo!</p>
+            <a id="signup">Cadastrar</a>
+        </form>
+
+        <form id="signup_popup" class="popup" hidden>
+            <a class="close_popup"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <figure>
+                <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-male2-512.png">
+            </figure>
+
+            <input type="text" placeholder="Nome" id="fname">
+
+            <input type="text" placeholder="Sobrenome" id="lname">
+
+            <input type="email" placeholder="Email" id="email">
+
+            <input type="password" placeholder="Senha" id="password">
+
+            <input type="password" placeholder="Confirme sua senha" id="confirm_password">
+
+            <button type="button" id="signup_button" disabled>Cadastrar</button>
+        </form>
 
         <h1 id="subject_name"> Disciplina </h1>
 
         <button type="button" id="like_button" class="like">Like <i class="fa fa-thumbs-up" aria-hidden="true"></i>
         </button>
         <p>Total de Likes: <output id="total_likes"></output></p>
-        <p>Usuários que deram like:</p>
-        <ul id="users_likes">
-        </ul>
 
     </main>
 
     <section>
         <input type="text" id="new_comment" placeholder="Escreva aqui seu comentário" maxlength="255">
-        <button type="button" id="submit_comment" disabled>Adicionar comentário</button>
+        <button type="button" id="submit_comment"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </button>
 
         <ul id="comments">
         </ul>
@@ -95,11 +90,9 @@
             <li><a href="http://github.com/wesleymonte"><i class="fa fa-github" aria-hidden="true"></i>Wesley</a></li>
             <li><a href="http://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i>
                     Aprenda como usar o site! (ATUALIZAR)</a></li>
-            <li><a
-                    href="https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub"><i
+            <li><a href="https://docs.google.com/document/d/e/2PACX-1vQg_32KOtk0Ok4EGrpZB_YlmWlRlOF-2fpuo7XfcncXnoSLKrlNy83Ymw-VffVN0BioqjAHnkS2TjJf/pub"><i
                         class="fa fa-google" aria-hidden="true"></i>
-                    Especificações
-                    do projeto</a></li>
+                    Especificações do projeto</a></li>
         </ul>
     </footer>
 

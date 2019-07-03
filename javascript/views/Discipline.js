@@ -11,7 +11,6 @@ var id = url_params.get("id");
 
 const $subject_name = document.querySelector("#subject_name");
 const $like_button = document.querySelector("#like_button");
-const $users_likes = document.querySelector("#users_likes");
 const $total_likes = document.querySelector("#total_likes");
 
 const $new_comment_text = document.querySelector("#new_comment");
@@ -21,20 +20,28 @@ const $comment_section = document.querySelector("#comments");
 
 $like_button.onclick = like;
 
-$new_comment_text.onkeyup = function () { validate_comment($new_comment_text.value, $new_comment_button) };
-
 $new_comment_button.onclick = function () { adding_comment(false, $new_comment_text) };
 
-$new_comment_text.addEventListener("keyup", function(e){
-    if(e.keyCode ===13){
+$new_comment_text.addEventListener("keyup", function (e) {
+    if (e.keyCode === 13) {
         e.preventDefault();
         $new_comment_button.click();
     }
 })
 
+var user_email;
+
 discipline_page(id);
 
-var user_email;
+
+async function verify_like() {
+    let response = await post_request(endpoints.subject() + "/" + id + "/like", {});
+    if (response.status == 200) {
+        dislike();
+    } else {
+        dislike_button();
+    }
+}
 
 async function adding_comment(reply, input, comment_id = 0) {
     let response;
@@ -60,12 +67,8 @@ async function discipline_page(id) {
         user_email = response.headers.get("Author");
         change_page(data);
     } else {
-        if (response.status == 403 || response.status == 401) {
-            window.localStorage.setItem("token", "");
-            alert("Faça login novamente!");
-        } else {
-            alert("Acho que essa disciplina não existe.");
-        }
+        window.localStorage.setItem("token", "");
+        alert("Algo deu errado...");
         document.location.href = "../../html/index.html";
     }
 }
@@ -73,25 +76,14 @@ async function discipline_page(id) {
 function change_page(data) {
     let data_json = JSON.parse(data);
     $subject_name.innerHTML = data_json.name;
-    $like_button.innerHTML = "Like";
+    verify_like();
 
-    change_like(data_json.likes, user_email);
+    change_like(data_json.likes);
     list_comments(data_json.commentList, user_email);
 }
 
-function change_like(likes, email) {
-    remove_childs($users_likes);
-
-    likes.forEach(element => {
-        let li = document.createElement("li");
-        li.innerHTML = element;
-        $users_likes.appendChild(li);
-        if (element == email) {
-            dislike_button();
-        }
-    });
-
-    $total_likes.innerHTML = likes.length;
+function change_like(likes) {
+    $total_likes.innerHTML = likes;
 
 }
 
@@ -138,14 +130,12 @@ function list_comments(comments, email) {
         reply_input.setAttribute("maxlength", "255");
 
         let send_reply = document.createElement("button");
-        send_reply.innerHTML = "Responder comentário";
+        send_reply.innerHTML = `<i class="fa fa-paper-plane" aria-hidden="true"></i>`;
         send_reply.setAttribute("hidden", true);
-        send_reply.setAttribute("type", "submit");
-        send_reply.setAttribute("disabled", true);
+        send_reply.setAttribute("type", "button");
 
-        reply_input.onkeyup = function () { validate_comment(reply_input.value, send_reply) };
-        reply_input.addEventListener("keyup", function(e){
-            if(e.keyCode ===13){
+        reply_input.addEventListener("keyup", function (e) {
+            if (e.keyCode === 13) {
                 e.preventDefault();
                 send_reply.click();
             }
@@ -165,7 +155,7 @@ function list_comments(comments, email) {
 
         comment.replies.forEach(reply => {
             let r = create_comment(reply, user_email);
-            r.setAttribute("class", "comment_reply");
+            r.setAttribute("commentreply", true);
             $comment_section.appendChild(r);
             delete_button_comment(r, reply);
         });
@@ -188,11 +178,7 @@ async function delete_button_comment(ps_comment, comment) {
         }
     }
 }
-function validate_comment(text, button) {
-    if (text.length >= 1) {
-        button.disabled = false;
-    }
-}
+
 
 async function like() {
     let response = await post_request(endpoints.subject() + "/" + id + "/like", {});
@@ -216,12 +202,12 @@ async function dislike() {
 
 function dislike_button() {
     $like_button.innerHTML = "Remover o Like";
-    $like_button.setAttribute("class","dislike");
+    $like_button.setAttribute("class", "dislike");
     $like_button.onclick = dislike;
 }
 
 function like_button() {
     $like_button.innerHTML = "Like"
-    $like_button.setAttribute("class","like");
+    $like_button.setAttribute("class", "like");
     $like_button.onclick = like;
 }

@@ -12,10 +12,17 @@ class Comment extends HTMLElement {
 
         const is_from_user = this.hasAttribute("isfromuser");
 
+        const reply = this.hasAttribute("commentreply");
+
+  
         let css = this.css();
 
         if (is_from_user) {
-            css = this.user_css();
+            css += this.user_css();
+        }
+
+        if (reply){
+            css += this.reply_css()
         }
 
         this.shadowRoot.innerHTML = `
@@ -51,11 +58,23 @@ class Comment extends HTMLElement {
         console.log(this.comment_delete);
     }
 
+    reply_css() { 
+
+        let style = `
+        div {
+            margin-left: 10%;
+            background-color: #9dc6a0;
+        }
+        `
+
+        return style;
+
+    }
+
 
     user_css() {
-        let style = this.css();
 
-        style += `
+        let style = `
         div {
             border: 2px solid red;
         }
@@ -69,7 +88,7 @@ class Comment extends HTMLElement {
     css() {
         let style = `
         div {
-            margin: 1%;
+            margin: 0.5%;
             background-color: #9dc6c9;
             display: grid;
             border: 1px solid black;
@@ -96,6 +115,7 @@ class Comment extends HTMLElement {
         .comment{
             grid-row: 2/3;
             grid-column: 1/4;
+            word-break: break-word;
         }
         button {
             grid-row: 1/2

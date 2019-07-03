@@ -136,8 +136,8 @@ async function sign_in() {
 async function signup_response(response) {
     let response_text = await response.text();
     if (response.status == 200) {
-        alert(data.msg);
         let data = JSON.parse(response_text);
+        alert(data.msg);
         close_forms();
     }else{
         alert("Não foi possível completar o cadastro.");
@@ -151,5 +151,6 @@ async function sign_up() {
     user.password = $password.value;
 
     let response = await post_request(endpoints.register(), user);
+    console.log(response);
     signup_response(response);
 }

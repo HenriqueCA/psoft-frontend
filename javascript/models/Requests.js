@@ -6,7 +6,7 @@ async function post_request(endpoint, body) {
         method: 'POST',
         headers: {
             'Authorization': window.localStorage.getItem('token'),
-            'Accept': 'application/json',
+            'Accept': 'application/json;charset=UTF-8',
             'Content-Type': 'application/json'
         },
         body: string_body
@@ -21,7 +21,7 @@ async function get_request(endpoint, params = "") {
         method: 'GET',
         headers: {
             'Authorization': window.localStorage.getItem('token'),
-            'Accept': 'application/json',
+            'Accept': 'application/json;charset=UTF-8',
             'Content-Type': 'application/json'
         }
     });
@@ -34,7 +34,7 @@ async function delete_request(endpoint, params = "") {
         method: 'DELETE',
         headers: {
             'Authorization': window.localStorage.getItem('token'),
-            'Accept': 'application/json',
+            'Accept': 'application/json;charset=UTF-8',
             'Content-Type': 'application/json'
         }
     });
