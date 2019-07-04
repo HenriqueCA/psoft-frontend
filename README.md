@@ -25,31 +25,31 @@ A pasta javascript contém os arquivos JavaScript do projeto.
 Na pasta components há a classe utilizada para criar um webcomponent de um comentário, utilizado no perfil das disciplinas.
 
 Na pasta controllers há os controladores da aplicação:
-###CommentController
+### CommentController
 Controlador de comentários.
-###ListDisciplines
+### ListDisciplines
 Controlador das disciplinas.
-###SearchController
+### SearchController
 Controlador da pesquisa de disciplinas.
-###UserController
+### UserController
 Controlador do usuário (login e registro).
 
 Na pasta models há os models utilizados na aplicação:
-###Endpoints
+### Endpoints
 Utilizado para os endpoints da API.
-###Requests
+### Requests
 Utilizado para os requests GET, POST...
-###User
+### User
 Utilizado para representar o usuário.
 
 Na pasta views há os arquivos que modificam a view:
-###Discipline
+### Discipline
 Modifica a página da disciplina.
-###Forms
+### Forms
 Modifica a página para os formulários de login e cadastro.
-###Ranking
+### Ranking
 Modifica a página do ranking de disciplinas.
-###Search
+### Search
 Modifica a página de pesquisa.
 
 Os arquivos da pasta view apresentam respostas ao usuário e pegam valores da página, passando para o controller que decidirá o que fazer com os valores e retornar respostas, utilizando models.
